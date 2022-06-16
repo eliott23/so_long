@@ -100,6 +100,11 @@ void    rect(char *name)
     }
 }
 
+void    ft_closed(char *name)
+{
+    
+}
+
 int	main(int argc, char **argv)
 {
     map_protect(argv[1]);
