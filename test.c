@@ -6,7 +6,26 @@ typedef struct p{
     void *i_ptr;
 }ptr;
 
-int ft_protect(char *m_name)
+int str_cmp(char *s1, char *s2)
+{
+    int i;
+
+    i = 0;
+    if (s1 && s2)
+    {
+        while (s1[i] && s2[i])
+        {
+            if (s1[i] != s2[i])
+                return (0);
+            i++;
+        }
+        if (!s1[i] && !s2[i])
+            return (1);
+    }
+    return (0);
+}
+
+int map_protect(char *m_name)
 {
     int i;
     int j;
@@ -15,15 +34,29 @@ int ft_protect(char *m_name)
     i = 0;
     while (m_name[i])
     {
-        while (m_name [i] && m_name[i] != '.')
+        while (m_name[i] && m_name[i] != '.')
             i++;
         j = i;
-         i++;
+        i++;
+        printf("this is i %d\n", i);
     }
+    if (m_name[j])
+    {
+        if (!str_cmp(".ber", m_name + j))
+        {
+            write(1, "Error\n", 6);
+            exit(0);
+        }
+        return (1);
+    }
+    write (1, "Error\n", 6);
+    exit(0);
 }
 
 int	main(int argc, char **argv)
 {
+    printf("%s\n", argv[1]);
+    map_protect(argv[1]);
     int a = 64;
     ptr l;
     l.ptr = mlx_init();
