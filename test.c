@@ -86,7 +86,8 @@ void    rect(char *name)
     fd = open(name, O_RDWR);
     while (str)
     {
-        printf("this is i and j %d %d\n", i, j);
+        if (j == 0)
+            j = i;
         free(str);
         if (i != j)
         {
