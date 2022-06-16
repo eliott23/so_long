@@ -1,4 +1,9 @@
 #include <mlx.h>
+#include <fcntl.h>
+#include <stdio.h>
+#include <unistd.h>
+#include <stdlib.h>
+#include "get_next_line.h"
 
 typedef struct p{
     void *ptr;
@@ -68,7 +73,7 @@ int ft_strlen(char *str)
     return (0);
 }
 
-int rect(char *name)
+void    rect(char *name)
 {
     int     fd;
     char    *str;
@@ -83,7 +88,10 @@ int rect(char *name)
     {
         free(str);
         if (i != j)
-            return (0);
+        {
+            write(1, "Error\n", 6);
+            exit(0);
+        }
         j = i;
         str = get_next_line(fd);
         i = ft_strlen(str);
@@ -93,6 +101,7 @@ int rect(char *name)
 int	main(int argc, char **argv)
 {
     map_protect(argv[1]);
+    rect(argv[1]);
     int a = 64;
     ptr l;
     l.ptr = mlx_init();
