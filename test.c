@@ -36,9 +36,10 @@ int map_protect(char *m_name)
     {
         while (m_name[i] && m_name[i] != '.')
             i++;
-        j = i;
-        i++;
-        printf("this is i %d\n", i);
+        if (m_name[i] == '.')
+            j = i;
+        if (m_name[i])
+            i++;
     }
     if (m_name[j])
     {
