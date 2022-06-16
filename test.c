@@ -54,9 +54,44 @@ int map_protect(char *m_name)
     exit(0);
 }
 
+int ft_strlen(char *str)
+{
+    int i;
+
+    i = 0;
+    if (str)
+    {
+        while (str[i])
+            i++;
+        return (i);
+    }
+    return (0);
+}
+
+int rect(char *name)
+{
+    int     fd;
+    char    *str;
+    int     i;
+    int     j;
+
+    i = 0;
+    j = 0;
+    str = malloc(sizeof(char));
+    fd = open(name, O_RDWR);
+    while (str)
+    {
+        free(str);
+        if (i != j)
+            return (0);
+        j = i;
+        str = get_next_line(fd);
+        i = ft_strlen(str);
+    }
+}
+
 int	main(int argc, char **argv)
 {
-    printf("%s\n", argv[1]);
     map_protect(argv[1]);
     int a = 64;
     ptr l;
