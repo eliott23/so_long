@@ -6,7 +6,23 @@ typedef struct p{
     void *i_ptr;
 }ptr;
 
-int	main()
+int ft_protect(char *m_name)
+{
+    int i;
+    int j;
+
+    j = 0;
+    i = 0;
+    while (m_name[i])
+    {
+        while (m_name [i] && m_name[i] != '.')
+            i++;
+        j = i;
+         i++;
+    }
+}
+
+int	main(int argc, char **argv)
 {
     int a = 64;
     ptr l;
