@@ -10,7 +10,8 @@ struct elements{
 typedef struct p{
     void *ptr;
     void *w_ptr;
-    void *i_ptr;
+    void *player;
+    void *backg;
 }ptr;
 
 #endif

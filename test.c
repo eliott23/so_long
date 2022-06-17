@@ -194,6 +194,13 @@ void    m_protect2(char *name)
     close(fd);
 }
 
+int ft_exit(int c)
+{
+    if (c == 27)
+        exit(0);
+    return (0);
+}
+
 int	main(int argc, char **argv)
 {
     map_protect(argv[1]);
@@ -205,9 +212,10 @@ int	main(int argc, char **argv)
     ptr l;
     l.ptr = mlx_init();
     l.w_ptr = mlx_new_window(l.ptr, 1000, 1000, "lol");
-    l.i_ptr = mlx_xpm_file_to_image(l.ptr, "grass.xpm", &a, &a);
-    mlx_put_image_to_window(l.ptr, l.w_ptr, l.i_ptr, 64, 0);
-    l.i_ptr = mlx_xpm_file_to_image(l.ptr, "plyr.xpm", &a, &a);
-    mlx_put_image_to_window(l.ptr, l.w_ptr, l.i_ptr, 0, 0);
+    l.backg = mlx_xpm_file_to_image(l.ptr, "grass.xpm", &a, &a);
+    l.player= mlx_xpm_file_to_image(l.ptr, "plyr.xpm", &a, &a);
+    mlx_put_image_to_window(l.ptr, l.w_ptr, l.backg, 0, 0);
+    mlx_put_image_to_window(l.ptr, l.w_ptr, l.player, 0, 0);
+    mlx_key_hook(l.w_ptr, ft_exit, &a);
     mlx_loop(l.ptr);
 }
