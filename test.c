@@ -154,11 +154,9 @@ void    ft_closed(char *name)
         if (str[i] != '1')
             exit(2);
     }
-    fprintf(stderr, "and now this is str %s", str);
+    i = 0;
     while (str[i] && str[i] != '\n')
     {
-        i = 0;
-        printf("%d\n", i);
         if (str[i] != '1')
             exit(2);
         i++;
