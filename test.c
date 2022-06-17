@@ -1,10 +1,4 @@
-#include <mlx.h>
-#include <fcntl.h>
-#include <stdio.h>
-#include <unistd.h>
-#include <stdlib.h>
 #include "so_long.h"
-#include "get_next_line.h"
 
 void    ft_error()
 {
@@ -204,17 +198,30 @@ int ft_test(int c, ptr *l)
     return (0);
 }
 
+int x_count(char *name)
+{
+    int     i;
+    int     fd;
+    char    *str;
+
+    fd = open(name, O_RDWR);
+    i = 0;
+    str = get_next_line(fd);
+    while (str && str[i] && str[i] != '\n')
+        i++;
+    return (i);
+}
+
 int	main(int argc, char **argv)
 {
     map_protect(argv[1]);
     m_protect2(argv[1]);
     rect(argv[1]);
-    printf("this is the n_lines:%d\n", ft_count_lines(argv[1]));
     ft_closed(argv[1]);
     int a = 64;
     ptr l;
     l.ptr = mlx_init();
-    l.w_ptr = mlx_new_window(l.ptr, 2000, 1000, "lol");
+    l.w_ptr = mlx_new_window(l.ptr, x_count(argv[1]) * 64, ft_count_lines(argv[1]) * 64, "lol");
     l.backg = mlx_xpm_file_to_image(l.ptr, "grass.xpm", &a, &a);
     l.player= mlx_xpm_file_to_image(l.ptr, "plyr.xpm", &a, &a);
     mlx_put_image_to_window(l.ptr, l.w_ptr, l.backg, 0, 0);
