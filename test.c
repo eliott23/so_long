@@ -3,13 +3,8 @@
 #include <stdio.h>
 #include <unistd.h>
 #include <stdlib.h>
+#include "so_long.h"
 #include "get_next_line.h"
-
-typedef struct p{
-    void *ptr;
-    void *w_ptr;
-    void *i_ptr;
-}ptr;
 
 void    ft_error()
 {
@@ -163,12 +158,46 @@ void    ft_closed(char *name)
             exit(2);
     }
     check_line(str);
+    close(fd);
+}
+
+void    m_protect2(char *name)
+{
+    int     fd;
+    char    *str;
+    int     i;
+    struct elements el;
+
+    el.C = 0;
+    el.E = 0;
+    el.P = 0;
+    fd = open(name, O_RDWR);
+    str = malloc(sizeof(char));
+    while (str)
+    {
+        i = 0;
+        free(str);
+        str = get_next_line(fd);
+        while (str && str[i] && str[i] != '\n')
+        {
+            if (str[i] == 'E')
+                el.E = 1;
+            if (str[i] == 'C')
+                el.C = 1;
+            if (str[i] == 'P')
+                el.P = 1;
+            i++;
+        }
+    }
+    if (!el.E || !el.C || !el.P)
+        ft_error();
+    close(fd);
 }
 
 int	main(int argc, char **argv)
 {
     map_protect(argv[1]);
-    //at least;
+    m_protect2(argv[1]);
     rect(argv[1]);
     printf("this is the n_lines:%d\n", ft_count_lines(argv[1]));
     ft_closed(argv[1]);
