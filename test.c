@@ -136,8 +136,9 @@ void    ft_closed(char *name)
     n_lines = ft_count_lines(name);
     fd = open(name, O_RDWR);
     str = get_next_line(fd);
-    while (str && str[i])
+    while (str && str[i] && str[i] != '\n')
     {
+        printf("lol\n");
         if (str[i] != '1')
             exit(2);
         i++;
@@ -148,15 +149,16 @@ void    ft_closed(char *name)
         i = 0;
         free(str);
         str = get_next_line(fd);
+        printf("this is str now %s\n", str);
         if (str[i] != 1)
             exit(2);
-        while (str[i] && str[i + 1])
+        printf("mark\n");
+        while (str[i] && str[i] != '\n' && str[i + 1] != '\n')
             i++;
         if (str[i] != 1)
             exit(2);
     }
-    printf("lol\n");
-    while (str[i])
+    while (str[i] && str[i] != '\n')
     {
         if (str[i] != '1')
             exit(2);
