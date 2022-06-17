@@ -146,6 +146,7 @@ void    ft_closed(char *name)
     while (--n_lines)
     {
         i = 0;
+        free(str);
         str = get_next_line(fd);
         if (str[i] != 1)
             exit(2);
@@ -154,6 +155,7 @@ void    ft_closed(char *name)
         if (str[i] != 1)
             exit(2);
     }
+    printf("lol\n");
     while (str[i])
     {
         if (str[i] != '1')
@@ -167,7 +169,7 @@ int	main(int argc, char **argv)
     map_protect(argv[1]);
     //at least;
     rect(argv[1]);
-    printf("%d\n", ft_count_lines(argv[1]));
+    printf("this is the n_lines:%d\n", ft_count_lines(argv[1]));
     ft_closed(argv[1]);
     int a = 64;
     ptr l;
