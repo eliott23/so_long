@@ -11,6 +11,12 @@ typedef struct p{
     void *i_ptr;
 }ptr;
 
+void    ft_error()
+{
+    write(1, "Error\n", 6);
+    exit(0);
+}
+
 int str_cmp(char *s1, char *s2)
 {
     int i;
@@ -49,13 +55,10 @@ int map_protect(char *m_name)
     if (m_name[j])
     {
         if (!str_cmp(".ber", m_name + j))
-        {
-            write(1, "Error\n", 6);
-            exit(0);
-        }
+            ft_error();
         return (1);
     }
-    write (1, "Error\n", 6);
+    write(1, "Error\n", 6);
     exit(0);
 }
 
@@ -79,9 +82,11 @@ void    rect(char *name)
     char    *str;
     int     i;
     int     j;
+    int     count;
 
     i = 0;
     j = 0;
+    count = 0;
     str = malloc(sizeof(char));
     fd = open(name, O_RDWR);
     while (str)
@@ -90,25 +95,80 @@ void    rect(char *name)
             j = i;
         free(str);
         if (i != j)
-        {
-            write(1, "Error\n", 6);
-            exit(0);
-        }
+            ft_error();
         j = i;
         str = get_next_line(fd);
         i = ft_strlen(str);
+        count++;
     }
+    close(fd);
+    if (count <= 1)
+        ft_error();
+}
+
+int     ft_count_lines(char *name)
+{
+    int     fd;
+    int     count;
+    char    *str;
+
+    count = -1;
+    fd = open(name, O_RDWR);
+    str = malloc(sizeof(char));
+    while(str)
+    {
+        count++;
+        free(str);
+        str = get_next_line(fd);
+    }
+    close(fd);
+    return (count);
 }
 
 void    ft_closed(char *name)
 {
-    
+    int     i;
+    char    *str;
+    int     fd;
+    int     n_lines;
+
+    i = 0;
+    n_lines = ft_count_lines(name);
+    fd = open(name, O_RDWR);
+    str = get_next_line(fd);
+    while (str && str[i])
+    {
+        if (str[i] != '1')
+            exit(2);
+        i++;
+    }
+    --n_lines;
+    while (--n_lines)
+    {
+        i = 0;
+        str = get_next_line(fd);
+        if (str[i] != 1)
+            exit(2);
+        while (str[i] && str[i + 1])
+            i++;
+        if (str[i] != 1)
+            exit(2);
+    }
+    while (str[i])
+    {
+        if (str[i] != '1')
+            exit(2);
+        i++;
+    }
 }
 
 int	main(int argc, char **argv)
 {
     map_protect(argv[1]);
+    //at least;
     rect(argv[1]);
+    printf("%d\n", ft_count_lines(argv[1]));
+    ft_closed(argv[1]);
     int a = 64;
     ptr l;
     l.ptr = mlx_init();
