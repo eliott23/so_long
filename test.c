@@ -147,7 +147,6 @@ void    ft_closed(char *name)
         i = 0;
         free(str);
         str = get_next_line(fd);
-        printf("this is str now %c\n", str[0]);
         if (str[i] != '1')
             exit(2);
         while (str[i] && str[i] != '\n' && str[i + 1] != '\n')
@@ -155,8 +154,11 @@ void    ft_closed(char *name)
         if (str[i] != '1')
             exit(2);
     }
+    fprintf(stderr, "and now this is str %s", str);
     while (str[i] && str[i] != '\n')
     {
+        i = 0;
+        printf("%d\n", i);
         if (str[i] != '1')
             exit(2);
         i++;
