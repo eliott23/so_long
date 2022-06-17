@@ -138,24 +138,21 @@ void    ft_closed(char *name)
     str = get_next_line(fd);
     while (str && str[i] && str[i] != '\n')
     {
-        printf("lol\n");
         if (str[i] != '1')
             exit(2);
         i++;
     }
-    --n_lines;
     while (--n_lines)
     {
         i = 0;
         free(str);
         str = get_next_line(fd);
-        printf("this is str now %s\n", str);
-        if (str[i] != 1)
+        printf("this is str now %c\n", str[0]);
+        if (str[i] != '1')
             exit(2);
-        printf("mark\n");
         while (str[i] && str[i] != '\n' && str[i + 1] != '\n')
             i++;
-        if (str[i] != 1)
+        if (str[i] != '1')
             exit(2);
     }
     while (str[i] && str[i] != '\n')
