@@ -193,15 +193,17 @@ void    m_protect2(char *name)
         ft_error();
     close(fd);
 }
+
 int ft_test(int c, ptr *l)
 {
     fprintf(stderr, "%d\n", c);
+    if (c == 53)
+        exit(0);
     if (c == 124)
-    {
-        mlx_destroy_image(l->ptr, l->player);
-    }
+        mlx_put_image_to_window(l->ptr, l->w_ptr, l->player, 64, 0);
     return (0);
 }
+
 int	main(int argc, char **argv)
 {
     map_protect(argv[1]);
