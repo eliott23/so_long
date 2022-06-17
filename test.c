@@ -125,6 +125,19 @@ int     ft_count_lines(char *name)
     return (count);
 }
 
+void    check_line(char *str)
+{
+    int i;
+
+    i = 0;
+    while (str && str[i] && str[i] != '\n')
+    {
+        if (str[i] != '1')
+            exit(2);
+        i++;
+    }
+}
+
 void    ft_closed(char *name)
 {
     int     i;
@@ -136,12 +149,7 @@ void    ft_closed(char *name)
     n_lines = ft_count_lines(name);
     fd = open(name, O_RDWR);
     str = get_next_line(fd);
-    while (str && str[i] && str[i] != '\n')
-    {
-        if (str[i] != '1')
-            exit(2);
-        i++;
-    }
+    check_line(str);
     while (--n_lines)
     {
         i = 0;
@@ -154,13 +162,7 @@ void    ft_closed(char *name)
         if (str[i] != '1')
             exit(2);
     }
-    i = 0;
-    while (str[i] && str[i] != '\n')
-    {
-        if (str[i] != '1')
-            exit(2);
-        i++;
-    }
+    check_line(str);
 }
 
 int	main(int argc, char **argv)
