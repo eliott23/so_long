@@ -21,6 +21,9 @@ typedef struct p{
     void    *obs;
     void    *coin;
     void    *ex;
+    int     n_coin;
+    int     x_l;
+    int     y_l;
 }ptr;
 int     ft_count_lines(char *name);
 int     x_count(char *name);

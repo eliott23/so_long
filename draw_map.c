@@ -1,14 +1,19 @@
 #include "so_long.h"
 
+int valid_move(char **map, int x, int y, ptr *l)
+{
+    if (map[y][x] != '1' && map[y][x] != 'E')
+        return (1);
+    if (map[y][x] == 'E' && !l->n_coin)
+}
+
 void    str_map(char *name, ptr *l)
 {
     int     y;
     int     i;
     int     fd;
-    int     c_count;
     char    **str;
 
-    c_count = 0;
     fd = open(name, O_RDWR);
     y = ft_count_lines(name);
     str = malloc(sizeof(char *) * y);
@@ -28,7 +33,7 @@ void    str_map(char *name, ptr *l)
             {
                 mlx_put_image_to_window(l->player, l->w_ptr, l->backg, i * 64, fd * 64);
                 mlx_put_image_to_window(l->ptr, l->w_ptr, l->coin, (i * 64) + 15.5, (fd * 64) + 15.5);
-                c_count++;
+                l->n_coin++;
             }
             if (str[fd][i] == 'E')
             {
