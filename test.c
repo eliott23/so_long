@@ -219,6 +219,8 @@ int ft_test(int c, ptr *l)
     if (valid_move(l->map, x / 64, y / 64, l))
     {
         fprintf(stderr, "went here\n");
+        mlx_put_image_to_window(l->ptr, l->w_ptr, l->backg, l->x, l->y);
+        mlx_put_image_to_window(l->ptr, l->w_ptr, l->backg, x, y);
         mlx_put_image_to_window(l->ptr, l->w_ptr, l->player, x, y);
         l->x = x;
         l->y = y;

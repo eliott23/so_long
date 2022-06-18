@@ -3,10 +3,16 @@
 int valid_move(char **map, int x, int y, ptr *l)
 {
     if (map[y][x] != '1' && map[y][x] != 'E')
+    {
+        if (map[y][x] == 'C')
+            l->n_coin--;
         return (1);
-    fprintf(stderr, "yaay\n");
+    }
     if (map[y][x] == 'E' && !l->n_coin)
-        return (1);
+    {   
+        fprintf(stderr, "ur trying to exit and this is the n_coin %d\n",l->n_coin);
+        exit(0);
+    }
     return (0);
 }
 
@@ -24,6 +30,7 @@ void    str_map(char *name, ptr *l)
     while (++i < y)
         str[i] = get_next_line(fd);
     l->map = str;
+    l->n_coin = 0;
     i = 0;
     fd = 0;
     while (fd < y)
