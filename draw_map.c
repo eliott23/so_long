@@ -5,8 +5,10 @@ void    str_map(char *name, ptr *l)
     int     y;
     int     i;
     int     fd;
+    int     c_count;
     char    **str;
 
+    c_count = 0;
     fd = open(name, O_RDWR);
     y = ft_count_lines(name);
     str = malloc(sizeof(char *) * y);
@@ -23,7 +25,10 @@ void    str_map(char *name, ptr *l)
             if (str[fd][i] == '1')
                 mlx_put_image_to_window(l->ptr, l->w_ptr, l->obs, i * 64, fd * 64);
             if (str[fd][i] == 'C')
+            {
                 mlx_put_image_to_window(l->ptr, l->w_ptr, l->coin, i * 64, fd * 64);
+                c_count++;
+            }
             if (str[fd][i] == 'E')
                 mlx_put_image_to_window(l->ptr, l->w_ptr, l->ex, i * 64, fd * 64);
             if (str[fd][i] == 'P')

@@ -221,13 +221,11 @@ int	main(int argc, char **argv)
     ft_closed(argv[1]);
     int a = 64;
     ptr l;
-    str_map(argv[1]);
     l.ptr = mlx_init();
     l.w_ptr = mlx_new_window(l.ptr, x_count(argv[1]) * 64, ft_count_lines(argv[1]) * 64, "lol");
     l.backg = mlx_xpm_file_to_image(l.ptr, "grass.xpm", &a, &a);
     l.player= mlx_xpm_file_to_image(l.ptr, "plyr.xpm", &a, &a);
-    mlx_put_image_to_window(l.ptr, l.w_ptr, l.backg, 64, 64);
-    mlx_put_image_to_window(l.ptr, l.w_ptr, l.player, 64, 64);
+    str_map(argv[1], &l);
     mlx_key_hook(l.w_ptr, ft_test, &a);
     mlx_loop(l.ptr);
 }
