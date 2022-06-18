@@ -195,7 +195,6 @@ int ft_test(int c, ptr *l)
 
     y = 0;
     x = 0;
-    // fprintf(stderr, "this is %d %d\n", l->x, l->y);
     if (c == 124)
     {
         x = l->x + 64;
@@ -228,8 +227,6 @@ int ft_test(int c, ptr *l)
     fprintf(stderr, "%d\n", c);
     if (c == 53)
         exit(0);
-    // if (c == 124)
-    //     mlx_put_image_to_window(l->ptr, l->w_ptr, l->player, 64, 0);
     return (0);
 }
 
@@ -245,6 +242,12 @@ int x_count(char *name)
     while (str && str[i] && str[i] != '\n')
         i++;
     return (i);
+}
+
+int lol(int c, int x, int y)
+{
+    fprintf(stderr, "this is c mousehook %d at %d:%d\n", c, x, y);
+    return (0);
 }
 
 int	main(int argc, char **argv)
@@ -264,7 +267,7 @@ int	main(int argc, char **argv)
     l.coin= mlx_xpm_file_to_image(l.ptr, "coin.xpm", &a, &a);
     l.ex = mlx_xpm_file_to_image(l.ptr, "exit.xpm", &a, &a);
     str_map(argv[1], &l);
-    fprintf(stderr,"this is x %d %d", l.x / 64, l.y / 64);
     mlx_key_hook(l.w_ptr, ft_test, &l);
+    mlx_mouse_hook(l.w_ptr, lol, &l);
     mlx_loop(l.ptr);
 }
