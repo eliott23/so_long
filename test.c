@@ -206,6 +206,16 @@ int ft_test(int c, ptr *l)
         x = l->x - 64;
         y = l->y;
     }
+    if (c == 125)
+    {
+        x = l->x;
+        y = l->y + 64;
+    }
+    if (c == 126)
+    {
+        x = l->x;
+        y = l->y - 64;
+    }
     if (valid_move(l->map, x / 64, y / 64, l))
     {
         fprintf(stderr, "went here\n");
