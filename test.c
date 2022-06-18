@@ -244,10 +244,9 @@ int x_count(char *name)
     return (i);
 }
 
-int lol(int c, int x, int y)
+int lol()
 {
-    fprintf(stderr, "this is c mousehook %d at %d:%d\n", c, x, y);
-    return (0);
+    exit(0);
 }
 
 int	main(int argc, char **argv)
@@ -268,6 +267,6 @@ int	main(int argc, char **argv)
     l.ex = mlx_xpm_file_to_image(l.ptr, "exit.xpm", &a, &a);
     str_map(argv[1], &l);
     mlx_key_hook(l.w_ptr, ft_test, &l);
-    mlx_mouse_hook(l.w_ptr, lol, &l);
+    mlx_hook(l.w_ptr, 17, 0, lol, l.ptr);
     mlx_loop(l.ptr);
 }
