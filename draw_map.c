@@ -2,13 +2,9 @@
 
 int valid_move(char **map, int x, int y, ptr *l)
 {
-    if (!map)
-    {
-        fprintf(stderr, "yaay\n");
-        exit(0);
-    }
     if (map[y][x] != '1' && map[y][x] != 'E')
         return (1);
+    fprintf(stderr, "yaay\n");
     if (map[y][x] == 'E' && !l->n_coin)
         return (1);
     return (0);

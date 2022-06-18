@@ -195,11 +195,13 @@ int ft_test(int c, ptr *l)
 
     y = 0;
     x = 0;
+    // fprintf(stderr, "this is %d %d\n", l->x, l->y);
     if (c == 124)
         x = l->x + 64;
-        fprintf(stderr,"lol");
-    if (valid_move(l->map, l->x / 64, l->y / 64, l))
+    if (valid_move(l->map, x / 64, y / 64, l))
     {
+        fprintf(stderr, "went here\n");
+        mlx_destroy_image(l->ptr, l->player);
         mlx_put_image_to_window(l->ptr, l->w_ptr, l->player, x, y);
     }
     fprintf(stderr, "%d\n", c);
@@ -241,6 +243,7 @@ int	main(int argc, char **argv)
     l.coin= mlx_xpm_file_to_image(l.ptr, "coin.xpm", &a, &a);
     l.ex = mlx_xpm_file_to_image(l.ptr, "exit.xpm", &a, &a);
     str_map(argv[1], &l);
-    mlx_key_hook(l.w_ptr, ft_test, &a);
+    fprintf(stderr,"this is x %d %d", l.x / 64, l.y / 64);
+    mlx_key_hook(l.w_ptr, ft_test, &l);
     mlx_loop(l.ptr);
 }
