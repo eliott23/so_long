@@ -24,5 +24,5 @@ typedef struct p{
 }ptr;
 int     ft_count_lines(char *name);
 int     x_count(char *name);
-void    str_map(char *name, ptr l);
+void    str_map(char *name, ptr *l);
 #endif
