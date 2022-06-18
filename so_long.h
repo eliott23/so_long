@@ -14,10 +14,15 @@ struct elements{
 };
 
 typedef struct p{
-    void *ptr;
-    void *w_ptr;
-    void *player;
-    void *backg;
+    void    *ptr;
+    void    *w_ptr;
+    void    *player;
+    void    *backg;
+    void    *obs;
+    void    *coin;
+    void    *ex;
 }ptr;
 int     ft_count_lines(char *name);
+int     x_count(char *name);
+void    str_map(char *name, ptr l);
 #endif

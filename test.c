@@ -214,12 +214,14 @@ int x_count(char *name)
 
 int	main(int argc, char **argv)
 {
+    argc = 0;
     map_protect(argv[1]);
     m_protect2(argv[1]);
     rect(argv[1]);
     ft_closed(argv[1]);
     int a = 64;
     ptr l;
+    str_map(argv[1]);
     l.ptr = mlx_init();
     l.w_ptr = mlx_new_window(l.ptr, x_count(argv[1]) * 64, ft_count_lines(argv[1]) * 64, "lol");
     l.backg = mlx_xpm_file_to_image(l.ptr, "grass.xpm", &a, &a);
