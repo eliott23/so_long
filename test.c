@@ -197,12 +197,21 @@ int ft_test(int c, ptr *l)
     x = 0;
     // fprintf(stderr, "this is %d %d\n", l->x, l->y);
     if (c == 124)
+    {
         x = l->x + 64;
+        y = l->y;
+    }
+    if (c == 123)
+    {
+        x = l->x - 64;
+        y = l->y;
+    }
     if (valid_move(l->map, x / 64, y / 64, l))
     {
         fprintf(stderr, "went here\n");
-        mlx_destroy_image(l->ptr, l->player);
         mlx_put_image_to_window(l->ptr, l->w_ptr, l->player, x, y);
+        l->x = x;
+        l->y = y;
     }
     fprintf(stderr, "%d\n", c);
     if (c == 53)
