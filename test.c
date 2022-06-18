@@ -226,6 +226,7 @@ int	main(int argc, char **argv)
     l.backg = mlx_xpm_file_to_image(l.ptr, "grass.xpm", &a, &a);
     l.player= mlx_xpm_file_to_image(l.ptr, "plyr.xpm", &a, &a);
     l.obs = mlx_xpm_file_to_image(l.ptr, "obs.xpm", &a, &a);
+    l.coin= mlx_xpm_file_to_image(l.ptr, "coin.xpm", &a, &a);
     str_map(argv[1], &l);
     mlx_key_hook(l.w_ptr, ft_test, &a);
     mlx_loop(l.ptr);
