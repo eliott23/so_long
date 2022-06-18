@@ -190,11 +190,23 @@ void    m_protect2(char *name)
 
 int ft_test(int c, ptr *l)
 {
+    int x;
+    int y;
+
+    y = 0;
+    x = 0;
+    if (c == 124)
+        x = l->x + 64;
+        fprintf(stderr,"lol");
+    if (valid_move(l->map, l->x / 64, l->y / 64, l))
+    {
+        mlx_put_image_to_window(l->ptr, l->w_ptr, l->player, x, y);
+    }
     fprintf(stderr, "%d\n", c);
     if (c == 53)
         exit(0);
-    if (c == 124)
-        mlx_put_image_to_window(l->ptr, l->w_ptr, l->player, 64, 0);
+    // if (c == 124)
+    //     mlx_put_image_to_window(l->ptr, l->w_ptr, l->player, 64, 0);
     return (0);
 }
 

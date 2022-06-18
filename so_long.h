@@ -22,9 +22,11 @@ typedef struct p{
     void    *coin;
     void    *ex;
     int     n_coin;
-    int     x_l;
-    int     y_l;
+    int     x;
+    int     y;
+    char    **map;
 }ptr;
+int     valid_move(char **map, int x, int y, ptr *l);
 int     ft_count_lines(char *name);
 int     x_count(char *name);
 void    str_map(char *name, ptr *l);
