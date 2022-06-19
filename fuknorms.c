@@ -6,13 +6,13 @@
 /*   By: aababach <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/19 17:34:45 by aababach          #+#    #+#             */
-/*   Updated: 2022/06/19 18:41:52 by aababach         ###   ########.fr       */
+/*   Updated: 2022/06/19 19:50:03 by aababach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	valid_move(char **map, int x, int y, ptr *l)
+int	valid_move(char **map, int x, int y, t_ptr *l)
 {
 	if (map[y][x] != '1' && map[y][x] != 'E')
 	{

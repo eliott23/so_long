@@ -6,7 +6,7 @@
 /*   By: aababach <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/19 16:53:32 by aababach          #+#    #+#             */
-/*   Updated: 2022/06/19 19:06:10 by aababach         ###   ########.fr       */
+/*   Updated: 2022/06/19 19:55:29 by aababach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -165,14 +165,14 @@ void	ft_closed(char *name)
 	close(fd);
 }
 
-void	cringenorms(char c, struct elements *el)
+void	cringenorms(char c, struct s_elements *el)
 {
 	if (c == 'E')
-		el->E = 1;
+		el->e = 1;
 	if (c == 'C')
-		el->C = 1;
+		el->c = 1;
 	if (c == 'P')
-		el->P = 1;
+		el->p = 1;
 }
 
 void	m_protect2(char *name)
@@ -180,11 +180,11 @@ void	m_protect2(char *name)
 	int				fd;
 	char			*str;
 	int				i;
-	struct elements	el;
+	struct s_elements	el;
 
-	el.C = 0;
-	el.E = 0;
-	el.P = 0;
+	el.c = 0;
+	el.e = 0;
+	el.p = 0;
 	fd = open(name, O_RDWR);
 	str = malloc(sizeof(char));
 	while (str)
@@ -198,12 +198,12 @@ void	m_protect2(char *name)
 			i++;
 		}
 	}
-	if (!el.E || !el.C || !el.P)
+	if (!el.e || !el.c || !el.p)
 		ft_error();
 	close(fd);
 }
 
-void	bruh(char c, int *x, int *y, ptr *l)
+void	bruh(char c, int *x, int *y, t_ptr *l)
 {
 	if (c == 2)
 	{
@@ -227,7 +227,7 @@ void	bruh(char c, int *x, int *y, ptr *l)
 	}
 }
 
-int	ft_test(int c, ptr *l)
+int	ft_test(int c, t_ptr *l)
 {
 	int	x;
 	int	y;
@@ -273,7 +273,7 @@ int	lol(void)
 
 int	main(int argc, char **argv)
 {
-	ptr	l;
+	t_ptr	l;
 
 	map_protect(argv[1]);
 	m_protect2(argv[1]);

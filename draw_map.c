@@ -6,13 +6,13 @@
 /*   By: aababach <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/19 17:29:12 by aababach          #+#    #+#             */
-/*   Updated: 2022/06/19 17:57:17 by aababach         ###   ########.fr       */
+/*   Updated: 2022/06/19 19:56:40 by aababach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	draw_coin(ptr *l, int i, int fd)
+void	draw_coin(t_ptr *l, int i, int fd)
 {
 	mlx_put_image_to_window(l->player, l->w_ptr, l->backg, i * 64, fd * 64);
 	i = (i * 64) + 15.5;
@@ -21,13 +21,13 @@ void	draw_coin(ptr *l, int i, int fd)
 	l->n_coin++;
 }
 
-void	d_E(ptr *l, int i, int fd)
+void	d_e(t_ptr *l, int i, int fd)
 {
 	mlx_put_image_to_window(l->player, l->w_ptr, l->backg, i * 64, fd * 64);
 	mlx_put_image_to_window(l->ptr, l->w_ptr, l->ex, i * 64, fd * 64);
 }
 
-void	d_P(ptr *l, int i, int fd)
+void	d_p(t_ptr *l, int i, int fd)
 {
 	mlx_put_image_to_window(l->player, l->w_ptr, l->backg, i * 64, fd * 64);
 	mlx_put_image_to_window(l->ptr, l->w_ptr, l->player, i * 64, fd * 64);
@@ -35,23 +35,23 @@ void	d_P(ptr *l, int i, int fd)
 	l->y = fd * 64;
 }
 
-void	f_norms(ptr *l, int i, int fd)
+void	f_norms(t_ptr *l, int i, int fd)
 {
 	if (l->map[fd][i] == '1')
 		mlx_put_image_to_window(l->ptr, l->w_ptr, l->obs, i * 64, fd * 64);
 	else if (l->map[fd][i] == 'C')
 		draw_coin(l, i, fd);
 	else if (l->map[fd][i] == 'E')
-		d_E(l, i, fd);
+		d_e(l, i, fd);
 	else if (l->map[fd][i] == 'P')
-		d_P(l, i, fd);
+		d_p(l, i, fd);
 	else if (l->map[fd][i] == '0')
 		mlx_put_image_to_window(l->player, l->w_ptr, l->backg, i * 64, fd * 64);
 	else
 		ft_error();
 }
 
-void	str_map(char *name, ptr *l)
+void	str_map(char *name, t_ptr *l)
 {
 	int	y;
 	int	i;
