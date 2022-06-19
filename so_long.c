@@ -6,7 +6,7 @@
 /*   By: aababach <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/19 16:53:32 by aababach          #+#    #+#             */
-/*   Updated: 2022/06/19 18:30:41 by aababach         ###   ########.fr       */
+/*   Updated: 2022/06/19 18:33:10 by aababach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,12 +95,8 @@ void	rect(char *name)
 	{
 		free(str);
 		str = get_next_line(fd);
-		fprintf(stderr, "this is str %d\n",ft_strlen(str));
-			fprintf(stderr, "this is i %d\nand this is len %d\n", i, ft_strlen(str));
-		if (i != ft_strlen(str))
-		{
+		if (str && i != ft_strlen(str))
 			ft_error();
-		}
 		count++;
 	}
 	close(fd);
