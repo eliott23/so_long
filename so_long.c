@@ -6,7 +6,7 @@
 /*   By: aababach <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/19 16:53:32 by aababach          #+#    #+#             */
-/*   Updated: 2022/06/19 18:34:17 by aababach         ###   ########.fr       */
+/*   Updated: 2022/06/19 18:42:36 by aababach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -279,5 +279,6 @@ int	main(int argc, char **argv)
 	str_map(argv[1], &l);
 	mlx_key_hook(l.w_ptr, ft_test, &l);
 	mlx_hook(l.w_ptr, 17, 0, lol, l.ptr);
+	put_nbr(l.n_moves);
 	mlx_loop(l.ptr);
 }

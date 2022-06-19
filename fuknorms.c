@@ -6,7 +6,7 @@
 /*   By: aababach <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/19 17:34:45 by aababach          #+#    #+#             */
-/*   Updated: 2022/06/19 17:35:14 by aababach         ###   ########.fr       */
+/*   Updated: 2022/06/19 18:41:52 by aababach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,4 +26,14 @@ int	valid_move(char **map, int x, int y, ptr *l)
 	if (map[y][x] == 'E' && !l->n_coin)
 		exit(0);
 	return (0);
+}
+
+void	put_nbr(int n)
+{
+	char	c;
+
+	if (n >= 10)
+		put_nbr(n / 10);
+	c = (n % 10) + 48;
+	write (1, &c, 1);
 }

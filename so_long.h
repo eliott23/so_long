@@ -12,6 +12,7 @@ struct elements{
     int C;
     int P;
 };
+void	put_nbr(int n);
 void    ft_error();
 typedef struct p{
     void    *ptr;
