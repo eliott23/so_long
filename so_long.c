@@ -6,7 +6,7 @@
 /*   By: aababach <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/19 16:53:32 by aababach          #+#    #+#             */
-/*   Updated: 2022/06/19 18:45:41 by aababach         ###   ########.fr       */
+/*   Updated: 2022/06/19 18:54:54 by aababach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -165,6 +165,17 @@ void	ft_closed(char *name)
 	close(fd);
 }
 
+void	cringenorms(char c, struct elements *el)
+{
+	if (c == 'E')
+		el->E = 1;
+	if (c == 'C')
+		el->C = 1;
+	if (c == 'P')
+		el->P = 1;
+
+}
+
 void	m_protect2(char *name)
 {
 	int				fd;
@@ -184,12 +195,7 @@ void	m_protect2(char *name)
 		str = get_next_line(fd);
 		while (str && str[i] && str[i] != '\n')
 		{
-			if (str[i] == 'E')
-				el.E = 1;
-			if (str[i] == 'C')
-				el.C = 1;
-			if (str[i] == 'P')
-				el.P = 1;
+			cringenorms(str[i], &el);
 			i++;
 		}
 	}
