@@ -7,13 +7,13 @@ draw_map.c\
 fuknorms.c\
 fuknorms2.c\
 fuknorms3.c\
-OBJ=get_next_line.o\
+OBJ=so_long.o\
+get_next_line.o\
 get_next_line_utils.o\
 draw_map.o\
 fuknorms.o\
 fuknorms2.o\
 fuknorms3.o\
-so_long.o\
 
 all:$(NAME)
 
