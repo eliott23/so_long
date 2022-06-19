@@ -6,7 +6,7 @@
 /*   By: aababach <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/19 17:29:12 by aababach          #+#    #+#             */
-/*   Updated: 2022/06/19 17:33:59 by aababach         ###   ########.fr       */
+/*   Updated: 2022/06/19 17:57:17 by aababach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void	str_map(char *name, ptr *l)
 	int	fd;
 
 	fd = open(name, O_RDWR);
-	y = ft_count_lines(name);
+	y = lines(name);
 	l->map = malloc(sizeof(char *) * y);
 	i = -1;
 	while (++i < y)

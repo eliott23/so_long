@@ -6,7 +6,7 @@
 /*   By: aababach <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/19 16:53:32 by aababach          #+#    #+#             */
-/*   Updated: 2022/06/19 17:52:22 by aababach         ###   ########.fr       */
+/*   Updated: 2022/06/19 17:56:21 by aababach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,7 @@ void	rect(char *name)
 		ft_error();
 }
 
-int	ft_count_lines(char *name)
+int	lines(char *name)
 {
 	int		fd;
 	int		count;
@@ -147,7 +147,7 @@ void	ft_closed(char *name)
 	int		n_lines;
 
 	i = 0;
-	n_lines = ft_count_lines(name);
+	n_lines = lines(name);
 	fd = open(name, O_RDWR);
 	str = get_next_line(fd);
 	check_line(str);
@@ -273,7 +273,7 @@ int	main(int argc, char **argv)
 	l.n_moves = 0;
 	l.ptr = mlx_init();
 	l.w_ptr = \
-	mlx_new_window(l.ptr, x_count(argv[1]) * 64, ft_count_lines(argv[1]) * 64, "lol");
+	mlx_new_window(l.ptr, x_count(argv[1]) * 64, lines(argv[1]) * 64, "lol");
 	l.backg = mlx_xpm_file_to_image(l.ptr, "grass.xpm", &argc, &argc);
 	l.player = mlx_xpm_file_to_image(l.ptr, "plyr.xpm", &argc, &argc);
 	l.obs = mlx_xpm_file_to_image(l.ptr, "obs.xpm", &argc, &argc);
