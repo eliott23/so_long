@@ -3,6 +3,9 @@ NAME=so_long
 SRC=get_next_line.c\
 get_next_line_utils.c\
 draw_map.c\
+fuknorms.c\
+fuknorms2.c\
+fuknorms3.c\
 so_long.c\
 
 OBJ=$(SRC:.c=.o)
