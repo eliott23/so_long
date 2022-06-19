@@ -1,14 +1,19 @@
-FLAGS=-Wall -Wextra -Werror -lmlx -framework OpenGL -framework AppKit
+FLAGS=-Wall -Wextra -Werror -lmlx -framework OpenGL -framework AppKit -D BUFFER_SIZE=1
 NAME=so_long
-SRC=get_next_line.c\
+SRC=so_long.c\
+get_next_line.c\
 get_next_line_utils.c\
 draw_map.c\
 fuknorms.c\
 fuknorms2.c\
 fuknorms3.c\
-so_long.c\
-
-OBJ=$(SRC:.c=.o)
+OBJ=get_next_line.o\
+get_next_line_utils.o\
+draw_map.o\
+fuknorms.o\
+fuknorms2.o\
+fuknorms3.o\
+so_long.o\
 
 all:$(NAME)
 
