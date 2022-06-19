@@ -6,7 +6,7 @@
 /*   By: aababach <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/19 16:53:32 by aababach          #+#    #+#             */
-/*   Updated: 2022/06/19 21:25:46 by aababach         ###   ########.fr       */
+/*   Updated: 2022/06/19 22:53:57 by aababach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,8 @@ int	main(int argc, char **argv)
 {
 	t_ptr	l;
 
+	if (argc < 2)
+		exit(0);
 	map_protect(argv[1]);
 	m_protect2(argv[1]);
 	rect(argv[1]);
