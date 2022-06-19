@@ -6,7 +6,7 @@
 /*   By: aababach <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/19 16:53:32 by aababach          #+#    #+#             */
-/*   Updated: 2022/06/19 19:04:36 by aababach         ###   ########.fr       */
+/*   Updated: 2022/06/19 19:05:34 by aababach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -235,7 +235,7 @@ int	ft_test(int c, ptr *l)
 
 	y = 0;
 	x = 0;
-	bruh(c, &x, &y, l);	
+	bruh(c, &x, &y, l);
 	if (valid_move(l->map, x / 64, y / 64, l))
 	{
 		mlx_put_image_to_window(l->ptr, l->w_ptr, l->backg, l->x, l->y);
