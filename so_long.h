@@ -5,7 +5,6 @@
 #include <stdio.h>
 #include <unistd.h>
 #include <stdlib.h>
-#include "lgebs.h"
 #include "get_next_line.h"
 
 struct elements{

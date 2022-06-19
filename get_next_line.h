@@ -6,7 +6,7 @@
 /*   By: aababach <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/17 14:29:54 by aababach          #+#    #+#             */
-/*   Updated: 2022/02/20 21:35:23 by aababach         ###   ########.fr       */
+/*   Updated: 2022/06/19 16:51:27 by aababach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 # include <stdio.h>
 # include <unistd.h>
 # include <stdlib.h>
-#include "lgebs.h"
 
 char	*get_next_line(int fd);
 int		myread(int fd, char **line, int buff_size);
