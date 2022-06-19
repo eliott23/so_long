@@ -6,13 +6,13 @@
 /*   By: aababach <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/19 16:53:32 by aababach          #+#    #+#             */
-/*   Updated: 2022/06/19 16:57:59 by aababach         ###   ########.fr       */
+/*   Updated: 2022/06/19 17:52:22 by aababach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	ft_error()
+void	ft_error(void)
 {
 	write(1, "Error\n", 6);
 	exit(0);
@@ -20,7 +20,7 @@ void	ft_error()
 
 int	str_cmp(char *s1, char *s2)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if (s1 && s2)
@@ -39,8 +39,8 @@ int	str_cmp(char *s1, char *s2)
 
 int	map_protect(char *m_name)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	j = 0;
 	i = 0;
@@ -65,7 +65,7 @@ int	map_protect(char *m_name)
 
 int	ft_strlen(char *str)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if (str)
@@ -79,11 +79,11 @@ int	ft_strlen(char *str)
 
 void	rect(char *name)
 {
-	int	 fd;
+	int		fd;
 	char	*str;
-	int	 i;
-	int	 j;
-	int	 count;
+	int		i;
+	int		j;
+	int		count;
 
 	i = 0;
 	j = 0;
@@ -109,14 +109,14 @@ void	rect(char *name)
 
 int	ft_count_lines(char *name)
 {
-	int	 fd;
-	int	 count;
+	int		fd;
+	int		count;
 	char	*str;
 
 	count = -1;
 	fd = open(name, O_RDWR);
 	str = malloc(sizeof(char));
-	while(str)
+	while (str)
 	{
 		count++;
 		free(str);
@@ -132,7 +132,8 @@ void	check_line(char *str)
 
 	i = 0;
 	while (str && str[i] && str[i] != '\n')
-	{   if (str[i] != '1')
+	{
+		if (str[i] != '1')
 			exit(2);
 		i++;
 	}
@@ -243,8 +244,8 @@ int	ft_test(int c, ptr *l)
 
 int	x_count(char *name)
 {
-	int	i;
-	int	fd;
+	int		i;
+	int		fd;
 	char	*str;
 
 	fd = open(name, O_RDWR);
@@ -256,28 +257,28 @@ int	x_count(char *name)
 	return (i);
 }
 
-int	lol()
+int	lol(void)
 {
 	exit(0);
 }
 
 int	main(int argc, char **argv)
 {
-	argc = 0;
+	ptr	l;
+
 	map_protect(argv[1]);
 	m_protect2(argv[1]);
 	rect(argv[1]);
 	ft_closed(argv[1]);
-	int a = 64;
-	ptr l;
 	l.n_moves = 0;
 	l.ptr = mlx_init();
-	l.w_ptr = mlx_new_window(l.ptr, x_count(argv[1]) * 64, ft_count_lines(argv[1]) * 64, "lol");
-	l.backg = mlx_xpm_file_to_image(l.ptr, "grass.xpm", &a, &a);
-	l.player= mlx_xpm_file_to_image(l.ptr, "plyr.xpm", &a, &a);
-	l.obs = mlx_xpm_file_to_image(l.ptr, "obs.xpm", &a, &a);
-	l.coin= mlx_xpm_file_to_image(l.ptr, "coin.xpm", &a, &a);
-	l.ex = mlx_xpm_file_to_image(l.ptr, "exit.xpm", &a, &a);
+	l.w_ptr = \
+	mlx_new_window(l.ptr, x_count(argv[1]) * 64, ft_count_lines(argv[1]) * 64, "lol");
+	l.backg = mlx_xpm_file_to_image(l.ptr, "grass.xpm", &argc, &argc);
+	l.player = mlx_xpm_file_to_image(l.ptr, "plyr.xpm", &argc, &argc);
+	l.obs = mlx_xpm_file_to_image(l.ptr, "obs.xpm", &argc, &argc);
+	l.coin = mlx_xpm_file_to_image(l.ptr, "coin.xpm", &argc, &argc);
+	l.ex = mlx_xpm_file_to_image(l.ptr, "exit.xpm", &argc, &argc);
 	str_map(argv[1], &l);
 	mlx_key_hook(l.w_ptr, ft_test, &l);
 	mlx_hook(l.w_ptr, 17, 0, lol, l.ptr);
