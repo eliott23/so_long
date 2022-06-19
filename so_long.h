@@ -45,4 +45,14 @@ int		lines(char *name);
 int		x_count(char *name);
 void	str_map(char *name, t_ptr *l);
 void	double_free(char **str, int y);
+void	cringenorms(char c, struct s_elements *el);
+int		f_exit(void);
+int		map_protect(char *m_name);
+int		str_cmp(char *s1, char *s2);
+void	ft_error(void);
+int		ft_strlen(char *str);
+void	rect(char *name);
+int		lines(char *name);
+void	check_line(char *str);
+void	ft_closed(char *name);
 #endif

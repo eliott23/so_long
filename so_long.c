@@ -12,169 +12,6 @@
 
 #include "so_long.h"
 
-void	ft_error(void)
-{
-	write(1, "Error\n", 6);
-	exit(0);
-}
-
-int	str_cmp(char *s1, char *s2)
-{
-	int	i;
-
-	i = 0;
-	if (s1 && s2)
-	{
-		while (s1[i] && s2[i])
-		{
-			if (s1[i] != s2[i])
-				return (0);
-			i++;
-		}
-		if (!s1[i] && !s2[i])
-			return (1);
-	}
-	return (0);
-}
-
-int	map_protect(char *m_name)
-{
-	int	i;
-	int	j;
-
-	j = 0;
-	i = 0;
-	while (m_name[i])
-	{
-		while (m_name[i] && m_name[i] != '.')
-			i++;
-		if (m_name[i] == '.')
-			j = i;
-		if (m_name[i])
-			i++;
-	}
-	if (m_name[j])
-	{
-		if (!str_cmp(".ber", m_name + j))
-			ft_error();
-		return (1);
-	}
-	write(1, "Error\n", 6);
-	exit(0);
-}
-
-int	ft_strlen(char *str)
-{
-	int	i;
-
-	i = 0;
-	if (str)
-	{
-		while (str[i])
-			i++;
-		return (i);
-	}
-	return (0);
-}
-
-void	rect(char *name)
-{
-	int		fd;
-	char	*str;
-	int		i;
-	int		j;
-	int		count;
-
-	i = 0;
-	j = 0;
-	count = 1;
-	fd = open(name, O_RDWR);
-	str = get_next_line(fd);
-	i = ft_strlen(str);
-	while (str)
-	{
-		free(str);
-		str = get_next_line(fd);
-		if (str && i != ft_strlen(str))
-			ft_error();
-		count++;
-	}
-	close(fd);
-	if (count <= 1)
-		ft_error();
-}
-
-int	lines(char *name)
-{
-	int		fd;
-	int		count;
-	char	*str;
-
-	count = -1;
-	fd = open(name, O_RDWR);
-	str = malloc(sizeof(char));
-	while (str)
-	{
-		count++;
-		free(str);
-		str = get_next_line(fd);
-	}
-	close(fd);
-	return (count);
-}
-
-void	check_line(char *str)
-{
-	int	i;
-
-	i = 0;
-	while (str && str[i] && str[i] != '\n')
-	{
-		if (str[i] != '1')
-			exit(2);
-		i++;
-	}
-}
-
-void	ft_closed(char *name)
-{
-	int		i;
-	char	*str;
-	int		fd;
-	int		n_lines;
-
-	i = 0;
-	n_lines = lines(name);
-	fd = open(name, O_RDWR);
-	str = get_next_line(fd);
-	check_line(str);
-	while (--n_lines)
-	{
-		i = 0;
-		free(str);
-		str = get_next_line(fd);
-		if (str[i] != '1')
-			exit(2);
-		while (str[i] && str[i] != '\n' && str[i + 1] != '\n')
-			i++;
-		if (str[i] != '1')
-			exit(2);
-	}
-	check_line(str);
-	free(str);
-	close(fd);
-}
-
-void	cringenorms(char c, struct s_elements *el)
-{
-	if (c == 'E')
-		el->e = 1;
-	if (c == 'C')
-		el->c = 1;
-	if (c == 'P')
-		el->p = 1;
-}
-
 void	m_protect2(char *name)
 {
 	int					fd;
@@ -266,10 +103,6 @@ int	x_count(char *name)
 	return (i);
 }
 
-int	lol(void)
-{
-	exit(0);
-}
 
 int	main(int argc, char **argv)
 {
@@ -290,7 +123,7 @@ int	main(int argc, char **argv)
 	l.ex = mlx_xpm_file_to_image(l.ptr, "exit.xpm", &argc, &argc);
 	str_map(argv[1], &l);
 	mlx_key_hook(l.w_ptr, ft_test, &l);
-	mlx_hook(l.w_ptr, 17, 0, lol, l.ptr);
+	mlx_hook(l.w_ptr, 17, 0, f_exit, l.ptr);
 	put_nbr(l.n_moves);
 	write(1, "\n", 1);
 	mlx_loop(l.ptr);
