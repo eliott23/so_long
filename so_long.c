@@ -6,7 +6,7 @@
 /*   By: aababach <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/19 16:53:32 by aababach          #+#    #+#             */
-/*   Updated: 2022/06/19 18:42:36 by aababach         ###   ########.fr       */
+/*   Updated: 2022/06/19 18:45:41 by aababach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -233,6 +233,8 @@ int	ft_test(int c, ptr *l)
 		l->x = x;
 		l->y = y;
 		l->n_moves++;
+		put_nbr(l->n_moves);
+		write(1, "\n", 1);
 	}
 	if (c == 53)
 		exit(0);
@@ -280,5 +282,6 @@ int	main(int argc, char **argv)
 	mlx_key_hook(l.w_ptr, ft_test, &l);
 	mlx_hook(l.w_ptr, 17, 0, lol, l.ptr);
 	put_nbr(l.n_moves);
+	write(1, "\n", 1);
 	mlx_loop(l.ptr);
 }
