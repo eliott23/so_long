@@ -6,7 +6,7 @@
 /*   By: aababach <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/19 16:53:32 by aababach          #+#    #+#             */
-/*   Updated: 2022/06/19 17:56:21 by aababach         ###   ########.fr       */
+/*   Updated: 2022/06/19 18:24:07 by aababach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,19 +87,20 @@ void	rect(char *name)
 
 	i = 0;
 	j = 0;
-	count = 0;
-	str = malloc(sizeof(char));
+	count = 1;
 	fd = open(name, O_RDWR);
+	str = get_next_line(fd);
+	i = ft_strlen(str);
 	while (str)
 	{
-		if (j == 0)
-			j = i;
 		free(str);
-		if (i != j)
-			ft_error();
-		j = i;
 		str = get_next_line(fd);
-		i = ft_strlen(str);
+		fprintf(stderr, "this is str %s\n",str);
+		if (i != ft_strlen(str))
+		{
+			fprintf(stderr, "this is i %d\nand this is len %d\n", i, ft_strlen(str));
+			ft_error();
+		}
 		count++;
 	}
 	close(fd);
