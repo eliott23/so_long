@@ -25,6 +25,7 @@ typedef struct p{
     int     x;
     int     y;
     char    **map;
+    int     n_moves;
 }ptr;
 int     valid_move(char **map, int x, int y, ptr *l);
 int     ft_count_lines(char *name);

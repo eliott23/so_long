@@ -195,22 +195,22 @@ int ft_test(int c, ptr *l)
 
     y = 0;
     x = 0;
-    if (c == 124)
+    if (c == 2)
     {
         x = l->x + 64;
         y = l->y;
     }
-    if (c == 123)
+    if (c == 0)
     {
         x = l->x - 64;
         y = l->y;
     }
-    if (c == 125)
+    if (c == 1)
     {
         x = l->x;
         y = l->y + 64;
     }
-    if (c == 126)
+    if (c == 13)
     {
         x = l->x;
         y = l->y - 64;
@@ -223,8 +223,9 @@ int ft_test(int c, ptr *l)
         mlx_put_image_to_window(l->ptr, l->w_ptr, l->player, x, y);
         l->x = x;
         l->y = y;
+        l->n_moves++;
+        fprintf(stderr, "%d\n", l->n_moves);
     }
-    fprintf(stderr, "%d\n", c);
     if (c == 53)
         exit(0);
     return (0);
@@ -258,6 +259,7 @@ int	main(int argc, char **argv)
     ft_closed(argv[1]);
     int a = 64;
     ptr l;
+    l.n_moves = 0;
     l.ptr = mlx_init();
     l.w_ptr = mlx_new_window(l.ptr, x_count(argv[1]) * 64, ft_count_lines(argv[1]) * 64, "lol");
     l.backg = mlx_xpm_file_to_image(l.ptr, "grass.xpm", &a, &a);
