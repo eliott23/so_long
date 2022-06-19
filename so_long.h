@@ -6,18 +6,18 @@
 /*   By: aababach <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/19 19:10:10 by aababach          #+#    #+#             */
-/*   Updated: 2022/06/19 19:40:47 by aababach         ###   ########.fr       */
+/*   Updated: 2022/06/19 19:42:46 by aababach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
-#include <mlx.h>
-#include <fcntl.h>
-#include <stdio.h>
-#include <unistd.h>
-#include <stdlib.h>
-#include "get_next_line.h"
+# include <mlx.h>
+# include <fcntl.h>
+# include <stdio.h>
+# include <unistd.h>
+# include <stdlib.h>
+# include "get_next_line.h"
 
 struct	elements{
 	int	E;
@@ -25,8 +25,8 @@ struct	elements{
 	int	P;
 };
 void	put_nbr(int n);
-void	ft_error();
-typedef struct	p{
+void	ft_error(void);
+typedef struct p{
 	void	*ptr;
 	void	*w_ptr;
 	void	*player;
