@@ -92,8 +92,6 @@ void    rect(char *name)
         i = ft_strlen(str);
         count++;
     }
-    if (str)
-        fprintf(stderr, "hahaha\n");
     close(fd);
     if (count <= 1)
         ft_error();
@@ -164,6 +162,7 @@ void    ft_closed(char *name)
         }
     }
     check_line(str);
+    free(str);
     close(fd);
 }
 
@@ -286,6 +285,6 @@ int	main(int argc, char **argv)
     str_map(argv[1], &l);
     mlx_key_hook(l.w_ptr, ft_test, &l);
     mlx_hook(l.w_ptr, 17, 0, lol, l.ptr);
-    mlx_loop(l.ptr);
     lgebs(0,0,0, 3, 0);
+    mlx_loop(l.ptr);
 }

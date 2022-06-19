@@ -13,7 +13,7 @@ struct elements{
     int C;
     int P;
 };
-
+void    ft_error();
 typedef struct p{
     void    *ptr;
     void    *w_ptr;
