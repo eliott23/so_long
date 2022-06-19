@@ -6,7 +6,7 @@
 /*   By: aababach <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/19 16:53:32 by aababach          #+#    #+#             */
-/*   Updated: 2022/06/19 19:05:34 by aababach         ###   ########.fr       */
+/*   Updated: 2022/06/19 19:06:10 by aababach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -173,7 +173,6 @@ void	cringenorms(char c, struct elements *el)
 		el->C = 1;
 	if (c == 'P')
 		el->P = 1;
-
 }
 
 void	m_protect2(char *name)
