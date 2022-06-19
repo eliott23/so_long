@@ -6,7 +6,7 @@
 /*   By: aababach <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/19 16:53:32 by aababach          #+#    #+#             */
-/*   Updated: 2022/06/19 18:54:54 by aababach         ###   ########.fr       */
+/*   Updated: 2022/06/19 19:04:36 by aababach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -204,6 +204,30 @@ void	m_protect2(char *name)
 	close(fd);
 }
 
+void	bruh(char c, int *x, int *y, ptr *l)
+{
+	if (c == 2)
+	{
+		*x = l->x + 64;
+		*y = l->y;
+	}
+	if (c == 0)
+	{
+		*x = l->x - 64;
+		*y = l->y;
+	}
+	if (c == 1)
+	{
+		*x = l->x;
+		*y = l->y + 64;
+	}
+	if (c == 13)
+	{
+		*x = l->x;
+		*y = l->y - 64;
+	}
+}
+
 int	ft_test(int c, ptr *l)
 {
 	int	x;
@@ -211,26 +235,7 @@ int	ft_test(int c, ptr *l)
 
 	y = 0;
 	x = 0;
-	if (c == 2)
-	{
-		x = l->x + 64;
-		y = l->y;
-	}
-	if (c == 0)
-	{
-		x = l->x - 64;
-		y = l->y;
-	}
-	if (c == 1)
-	{
-		x = l->x;
-		y = l->y + 64;
-	}
-	if (c == 13)
-	{
-		x = l->x;
-		y = l->y - 64;
-	}
+	bruh(c, &x, &y, l);	
 	if (valid_move(l->map, x / 64, y / 64, l))
 	{
 		mlx_put_image_to_window(l->ptr, l->w_ptr, l->backg, l->x, l->y);
