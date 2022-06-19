@@ -1,8 +1,9 @@
 #include "so_long.h"
 
 void    ft_error()
-{
+{   
     write(1, "Error\n", 6);
+    lgebs(0,0,0, 3, 0);
     exit(0);
 }
 
@@ -48,6 +49,7 @@ int map_protect(char *m_name)
         return (1);
     }
     write(1, "Error\n", 6);
+    lgebs(0,0,0, 3, 0);
     exit(0);
 }
 
@@ -90,6 +92,8 @@ void    rect(char *name)
         i = ft_strlen(str);
         count++;
     }
+    if (str)
+        fprintf(stderr, "hahaha\n");
     close(fd);
     if (count <= 1)
         ft_error();
@@ -120,9 +124,11 @@ void    check_line(char *str)
 
     i = 0;
     while (str && str[i] && str[i] != '\n')
-    {
-        if (str[i] != '1')
+    {   if (str[i] != '1')
+        {
+            lgebs(0,0,0, 3, 0);
             exit(2);
+        }
         i++;
     }
 }
@@ -145,11 +151,17 @@ void    ft_closed(char *name)
         free(str);
         str = get_next_line(fd);
         if (str[i] != '1')
+        {
+            lgebs(0,0,0, 3, 0);
             exit(2);
+        }
         while (str[i] && str[i] != '\n' && str[i + 1] != '\n')
             i++;
         if (str[i] != '1')
+        {
+            lgebs(0,0,0, 3, 0);
             exit(2);
+        }
     }
     check_line(str);
     close(fd);
@@ -217,17 +229,19 @@ int ft_test(int c, ptr *l)
     }
     if (valid_move(l->map, x / 64, y / 64, l))
     {
-        fprintf(stderr, "went here\n");
         mlx_put_image_to_window(l->ptr, l->w_ptr, l->backg, l->x, l->y);
         mlx_put_image_to_window(l->ptr, l->w_ptr, l->backg, x, y);
         mlx_put_image_to_window(l->ptr, l->w_ptr, l->player, x, y);
         l->x = x;
         l->y = y;
         l->n_moves++;
-        fprintf(stderr, "%d\n", l->n_moves);
+        //fprintf(stderr, "%d\n", l->n_moves);
     }
     if (c == 53)
+    {
+        lgebs(0,0,0, 3, 0);
         exit(0);
+    }
     return (0);
 }
 
@@ -242,11 +256,13 @@ int x_count(char *name)
     str = get_next_line(fd);
     while (str && str[i] && str[i] != '\n')
         i++;
+    free(str);
     return (i);
 }
 
 int lol()
 {
+    lgebs(0,0,0, 3, 0);
     exit(0);
 }
 
@@ -271,4 +287,5 @@ int	main(int argc, char **argv)
     mlx_key_hook(l.w_ptr, ft_test, &l);
     mlx_hook(l.w_ptr, 17, 0, lol, l.ptr);
     mlx_loop(l.ptr);
+    lgebs(0,0,0, 3, 0);
 }

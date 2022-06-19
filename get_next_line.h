@@ -17,6 +17,7 @@
 # include <stdio.h>
 # include <unistd.h>
 # include <stdlib.h>
+#include "lgebs.h"
 
 char	*get_next_line(int fd);
 int		myread(int fd, char **line, int buff_size);

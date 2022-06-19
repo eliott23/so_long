@@ -1,11 +1,12 @@
 #ifndef SO_LONG_H
 # define SO_LONG_H
-#include "get_next_line.h"
 #include <mlx.h>
 #include <fcntl.h>
 #include <stdio.h>
 #include <unistd.h>
 #include <stdlib.h>
+#include "lgebs.h"
+#include "get_next_line.h"
 
 struct elements{
     int E;
@@ -31,4 +32,5 @@ int     valid_move(char **map, int x, int y, ptr *l);
 int     ft_count_lines(char *name);
 int     x_count(char *name);
 void    str_map(char *name, ptr *l);
+void    double_free(char **str, int y);
 #endif

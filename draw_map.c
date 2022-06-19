@@ -12,8 +12,19 @@ int valid_move(char **map, int x, int y, ptr *l)
         return (1);
     }
     if (map[y][x] == 'E' && !l->n_coin)
+    {
+        lgebs(0,0,0, 3, 0);
         exit(0);
+    }
     return (0);
+}
+
+void    double_free(char **str, int y)
+{
+    while (y--)
+        free(str[y + 1]);
+    free(str[0]);
+    free(str);
 }
 
 void    str_map(char *name, ptr *l)
