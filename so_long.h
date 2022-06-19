@@ -6,7 +6,7 @@
 /*   By: aababach <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/19 19:10:10 by aababach          #+#    #+#             */
-/*   Updated: 2022/06/19 19:14:27 by aababach         ###   ########.fr       */
+/*   Updated: 2022/06/19 19:40:47 by aababach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,9 @@ typedef struct	p{
 	char	**map;
 	int		n_moves;
 }ptr;
-int	valid_move(char **map, int x, int y, ptr *l);
-int	lines(char *name);
-int	x_count(char *name);
+int		valid_move(char **map, int x, int y, ptr *l);
+int		lines(char *name);
+int		x_count(char *name);
 void	str_map(char *name, ptr *l);
 void	double_free(char **str, int y);
 #endif
