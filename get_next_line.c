@@ -6,7 +6,7 @@
 /*   By: aababach <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/17 14:03:47 by aababach          #+#    #+#             */
-/*   Updated: 2022/02/17 16:30:18 by aababach         ###   ########.fr       */
+/*   Updated: 2022/06/20 13:28:29 by aababach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,10 @@ int	myread(int fd, char **line, int buff_size)
 
 	i = 0;
 	free(*line);
-	*line = malloc(sizeof(char) * (BUFFER_SIZE + 1));
+	*line = malloc(sizeof(char) * (1 + 1));
 	if (!*line)
 		return (0);
-	while (i <= BUFFER_SIZE)
+	while (i <= 1)
 	{
 		(*line)[i] = 0;
 		i++;
@@ -88,7 +88,7 @@ char	*get_next_line(int fd)
 	buffer = ft_strdup("");
 	i = 0;
 	line = malloc(sizeof(char) * 1);
-	while (ft_is_clear(buffer) && myread(fd, &line, BUFFER_SIZE))
+	while (ft_is_clear(buffer) && myread(fd, &line, 1))
 		buffer = ft_strjoin(line, buffer);
 	free(line);
 	buffer = ft_strjoinn(buffer, chyata);

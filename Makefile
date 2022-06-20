@@ -1,25 +1,34 @@
-FLAGS=-Wall -Wextra -Werror -lmlx -framework OpenGL -framework AppKit -D BUFFER_SIZE=1
+FLAGS=-Wall -Wextra -Werror -lmlx -framework OpenGL -framework AppKit
 NAME=so_long
-SRC=so_long.c\
-	get_next_line.c\
-	get_next_line_utils.c\
-	draw_map.c\
-	fuknorms.c\
+SRC=draw_map.c\
 	fuknorms2.c\
+	get_next_line.c\
+	so_long.c\
+	fuknorms.c\
 	fuknorms3.c\
+	get_next_line_utils.c\
+
+OBJ=draw_map.o\
+	fuknorms2.o\
+	get_next_line.o\
+	so_long.o\
+	fuknorms.o\
+	fuknorms3.o\
+	get_next_line_utils.o\
 
 all:$(NAME)
 
-$(NAME): $(OBJ)
-	cc $(FLAGS) -o $(NAME) $(SRC)
+$(NAME):$(OBJ)
+	cc $(FLAGS) -o $@ $(OBJ)
 
 $(OBJ) : $(SRC)
-	cc $(FLAGS) -c $(SRC)
+	cc -c $(SRC)
 
 clean:
-	rm -rf *.o so_long
+	rm -rf $(OBJ)
 	echo "CLEANED"
 
 re: clean all
 fclean: clean
+	rm -rf $(OBJ)
 	rm -rf $(NAME)
